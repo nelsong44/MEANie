@@ -19,16 +19,17 @@ router.get( '/', function( req, res ){
   res.send( data );
   });
 });
-
-app.post( '/', function( req, res ){
+router.post( '/', function( req, res ){
   console.log( 'req.body.name: ' + req.body.name );
   // retrieved the req.body
   // putting it into an object to be saved in the db
-  var recordToAdd={
+  var recordToAdd = {
     name:req.body.name,
     location:req.body.location
-  }
+  };
   // create new record
-  var newRecord=peepsModel( recordToAdd );
+  var newRecord = peepsModel( recordToAdd );
   newRecord.save();
 });
+
+module.exports = router;
